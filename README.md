@@ -2,7 +2,7 @@
 
 > Do global assets (stocks, commodities, currencies, crypto, bonds) move together, and do those relationships tighten in a crisis? A Python analysis of 44 assets from 2000 to 2026, delivered as a 6-page interactive Power BI dashboard.
 
-![Summary page](images/01.png)
+![Summary page](dashboard/images/01.png)
 
 ## Why this project
 
@@ -38,27 +38,27 @@ Latest connectedness, current regime, and the average pairwise correlation over 
 ### 2. Market Overview
 Every asset rebased to 100 at the start of the selected period, on a log scale, so growth can be compared directly. Filters for category, asset and date range.
 
-![Market Overview](images/02.png)
+![Market Overview](dashboard/images/02.png)
 
 ### 3. Correlation Heatmap
 The "relationship map": 120-day correlations for every asset pair, for any month-end date. Blue means moving together, red means moving in opposite directions. Comparing a crisis month with a calm month shows how the web tightens. In June 2017, for example, Brent oil and the Dow Jones had a correlation of about 0.14, versus about 0.51 at the end of March 2020.
 
-![Correlation heatmap, June 2017](images/03.png)
+![Correlation heatmap, June 2017](dashboard/images/03.png)
 
 ### 4. Pair Explorer
 Pick any two assets and a window (60, 120 or 250 days) to see how their correlation changed from 2000 to today, with the latest and full-period average values.
 
-![Pair Explorer](images/04.png)
+![Pair Explorer](dashboard/images/04.png)
 
 ### 5. Crisis Comparison
 Average correlation in each of seven crisis periods against a calm 2017 baseline, plus a category-by-category matrix for the selected crisis. In the COVID crash, crypto, sectors and equities were tightly linked (for example 0.96 within crypto and 0.88 within sectors), while the VIX was strongly negative against equities (about -0.67).
 
-![Crisis Comparison](images/05.png)
+![Crisis Comparison](dashboard/images/05.png)
 
 ### 6. Safe-Haven Scorecard
 What each asset did on the worst 5% of S&P 500 days since 2000: the share of those days it rose, and its average return.
 
-![Safe-Haven Scorecard](images/06.png)
+![Safe-Haven Scorecard](dashboard/images/06.png)
 
 ## Data
 
@@ -130,17 +130,17 @@ Some assets start later than 2000 (Bitcoin 2014, Ethereum 2017, some bond ETFs 2
 market-web/
 ├── README.md
 ├── notebooks/
-│   ├── 01_collect.ipynb          # download prices (Yahoo) and macro data (FRED)
-│   ├── 02_clean_returns.ipynb    # cleaning, coverage report, daily and weekly returns
-│   ├── 03_analysis.ipynb         # rolling correlations, connectedness, crises, safe havens
-│   └── 04_export.ipynb           # tables for Power BI
+│   ├── collect.ipynb          # download prices (Yahoo) and macro data (FRED)
+│   ├── clean_returns.ipynb    # cleaning, coverage report, daily and weekly returns
+│   ├── analysis.ipynb         # rolling correlations, connectedness, crises, safe havens
+│   └── export.ipynb           # tables for Power BI
 ├── data/
 │   ├── raw/                      # untouched downloads (not in the repo)
 │   ├── clean/                    # processed data (not in the repo)
 │   └── powerbi/                  # CSVs loaded into Power BI (not in the repo)
 └── dashboard/
     ├── market-web.pbix
-    └── screenshots/
+    └── images/
 ```
 
 ## How to reproduce
@@ -150,7 +150,7 @@ pip install yfinance pandas numpy matplotlib seaborn scikit-learn pyarrow fredap
 ```
 
 1. Get a free API key from [fred.stlouisfed.org](https://fred.stlouisfed.org) and set it as an environment variable named `FRED_API_KEY`. Never commit the key.
-2. Run the notebooks in order: `01` to `04`. The first run downloads about 25 years of data and can take a few minutes.
+2. Run the notebooks in order. The first run downloads about 25 years of data and can take a few minutes.
 3. Open `dashboard/market-web.pbix` in Power BI Desktop and point the data source to `data/powerbi/`.
 
 ## Limitations
