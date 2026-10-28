@@ -1,0 +1,32 @@
+# Secrets
+.env
+.env.*
+*.env
+secrets.*
+*.key
+!.env.example
+
+# Data (recreate by running the notebooks)
+data/
+*.parquet
+*.csv.gz
+
+# Jupyter and Python
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Editors and OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Power BI temporary files
+*.pbix.bak
+*.tmp
+~$*
